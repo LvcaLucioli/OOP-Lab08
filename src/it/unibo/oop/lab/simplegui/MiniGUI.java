@@ -45,10 +45,10 @@ public class MiniGUI {
         final JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
         panel.add(write);
-        frame.setContentPane(panel);
         //01.02
         final JTextField result = new JTextField();
         panel.add(result, BorderLayout.NORTH);
+        canvas.add(panel);
         frame.setContentPane(panel);
         //01.03
         
