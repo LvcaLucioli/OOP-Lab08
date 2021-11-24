@@ -50,6 +50,8 @@ public class MiniGUI {
         final JTextField result = new JTextField();
         panel.add(result, BorderLayout.NORTH);
         frame.setContentPane(panel);
+        //01.03
+        
         /*
          * Handlers
          */
@@ -80,6 +82,7 @@ public class MiniGUI {
          * on screen. Results may vary, but it is generally the best choice.
          */
         frame.setLocationByPlatform(true);
+        frame.pack();
         /*
          * OK, ready to pull the frame onscreen
          */
