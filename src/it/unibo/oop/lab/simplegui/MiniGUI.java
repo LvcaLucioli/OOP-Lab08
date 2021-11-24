@@ -43,22 +43,21 @@ public class MiniGUI {
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // 01.01
         final JPanel panel = new JPanel();
-        canvas.add(panel);
         panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
         panel.add(write);
+        canvas.add(panel);
         //01.02
         final JTextField result = new JTextField();
         canvas.add(result, BorderLayout.NORTH);
         frame.setContentPane(canvas);
         //01.03
-        
         /*
          * Handlers
          */
         write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println(rng.nextInt());
+                result.setText("I generated " + rng.nextInt());
             }
         });
     }
