@@ -47,6 +47,9 @@ public class BadIOGUI {
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
         panel.add(write, BorderLayout.CENTER);
         canvas.add(panel, BorderLayout.CENTER);
+        //01.02
+        final JButton read = new JButton("button");
+        panel.add(read, BorderLayout.CENTER);
         /*
          * Handlers
          */
@@ -67,6 +70,14 @@ public class BadIOGUI {
                     e1.printStackTrace();
                 }
             }
+        });
+        //01.02
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                // TODO Auto-generated method stub
+                System.out.println("hi! this is a string on terminal");
+            } 
         });
     }
 

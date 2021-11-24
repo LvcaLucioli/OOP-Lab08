@@ -15,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 
 /**
  * This class is a simple application that writes a random number on a file.
