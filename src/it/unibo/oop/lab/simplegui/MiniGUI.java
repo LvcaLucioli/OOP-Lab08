@@ -14,6 +14,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 /**
@@ -44,6 +45,10 @@ public class MiniGUI {
         final JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
         panel.add(write);
+        frame.setContentPane(panel);
+        //01.02
+        final JTextField result = new JTextField();
+        panel.add(result, BorderLayout.NORTH);
         frame.setContentPane(panel);
         /*
          * Handlers
