@@ -1,9 +1,18 @@
 package it.unibo.oop.lab.mvcio;
 
+import java.io.File;
+
 /**
  * 
  */
 public class Controller {
+    private File currentFile;
+    
+    public String getCurrentFilePath() {
+        return currentFile.getPath();
+    }
+    
+    
 
     /*
      * This class must implement a simple controller responsible of I/O access. It
