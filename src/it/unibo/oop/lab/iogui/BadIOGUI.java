@@ -6,7 +6,11 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
@@ -71,12 +75,17 @@ public class BadIOGUI {
                 }
             }
         });
-        //01.02
+        //01.02 / 01.03
         read.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                // TODO Auto-generated method stub
                 System.out.println("hi! this is a string on terminal");
+                try {
+                    final List<String> myList = Files.readAllLines(Paths.get(PATH));
+                    myList.forEach(System.out::println); 
+                } catch (IOException e2) {
+                    System.out.println("something went wrong");
+                }
             } 
         });
     }
