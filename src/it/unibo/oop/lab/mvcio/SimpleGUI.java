@@ -68,6 +68,7 @@ public final class SimpleGUI {
         panel.add(saveButton, BorderLayout.SOUTH);
         frame.setContentPane(panel);
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public static void main(final String[] args) {
         SimpleGUI myGUI = new SimpleGUI();
