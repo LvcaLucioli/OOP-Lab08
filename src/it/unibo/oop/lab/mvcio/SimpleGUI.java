@@ -2,6 +2,9 @@ package it.unibo.oop.lab.mvcio;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
@@ -51,6 +54,7 @@ public final class SimpleGUI {
          * MUCH better than manually specify the size of a window in pixel: it
          * takes into account the current resolution.
          */
+        final Controller controller = new Controller();
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
@@ -69,6 +73,17 @@ public final class SimpleGUI {
         frame.setContentPane(panel);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        saveButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                try {
+                    controller.writeAString(textArea.getText());
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
     }
     public static void main(final String[] args) {
         SimpleGUI myGUI = new SimpleGUI();
