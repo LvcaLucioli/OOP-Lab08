@@ -86,7 +86,7 @@ public final class SimpleGUI {
         });
     }
     public static void main(final String[] args) {
-        SimpleGUI myGUI = new SimpleGUI();
+        final SimpleGUI myGUI = new SimpleGUI();
     }
 
 }
