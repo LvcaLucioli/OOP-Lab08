@@ -2,8 +2,12 @@ package it.unibo.oop.lab.mvcio;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.BorderLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  * A very simple program using a graphical interface.
@@ -57,6 +61,16 @@ public final class SimpleGUI {
          * on screen. Results may vary, but it is generally the best choice.
          */
         frame.setLocationByPlatform(true);
+        final JPanel panel = new JPanel(new BorderLayout());
+        final JTextArea textArea = new JTextArea();
+        final JButton saveButton = new JButton("save");
+        panel.add(textArea, BorderLayout.NORTH);
+        panel.add(saveButton, BorderLayout.SOUTH);
+        frame.setContentPane(panel);
+        frame.setVisible(true);
+    }
+    public static void main(final String[] args) {
+        SimpleGUI myGUI = new SimpleGUI();
     }
 
 }
