@@ -1,11 +1,24 @@
 package it.unibo.oop.lab.mvcio2;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+import it.unibo.oop.lab.mvcio.Controller;
+
 /**
  * A very simple program using a graphical interface.
  * 
  */
 public final class SimpleGUIWithFileChooser {
-
+    private final JFrame frame = new JFrame();
     /*
      * TODO: Starting from the application in mvcio:
      * 
@@ -31,5 +44,37 @@ public final class SimpleGUIWithFileChooser {
      * update the UI: in this example the UI knows when should be updated, so
      * try to keep things separated.
      */
+
+    public SimpleGUIWithFileChooser() {
+        final Controller controller = new Controller();
+        final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        final int sw = (int) screen.getWidth();
+        final int sh = (int) screen.getHeight();
+        frame.setSize(sw / 2, sh / 2);
+        
+        final JPanel mainPanel = new JPanel(new BorderLayout());
+        final JPanel secondPanel = new JPanel(new BorderLayout());
+        
+        final JTextField currentFileTextField = new JTextField();
+        currentFileTextField.setEditable(false);
+        
+        final JButton browseButton = new JButton("browse");
+        
+        final JTextArea textArea = new JTextArea();
+        final JButton saveButton = new JButton("save");
+        
+        mainPanel.add(secondPanel, BorderLayout.NORTH);
+        mainPanel.add(textArea, BorderLayout.CENTER);
+        mainPanel.add(saveButton, BorderLayout.SOUTH);
+        secondPanel.add(currentFileTextField, BorderLayout.CENTER);
+        secondPanel.add(browseButton, BorderLayout.LINE_END);
+        
+        frame.setContentPane(mainPanel);
+        frame.setVisible(true);
+    }
+    
+    public static void main(final String[] args) {
+        final SimpleGUIWithFileChooser myGUI = new SimpleGUIWithFileChooser();
+    }
 
 }
