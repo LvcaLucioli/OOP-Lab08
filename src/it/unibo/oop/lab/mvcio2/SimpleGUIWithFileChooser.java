@@ -2,15 +2,18 @@ package it.unibo.oop.lab.mvcio2;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-
 import it.unibo.oop.lab.mvcio.Controller;
 
 /**
@@ -68,6 +71,22 @@ public final class SimpleGUIWithFileChooser {
         
         secondPanel.add(currentFileTextField, BorderLayout.CENTER);
         secondPanel.add(browseButton, BorderLayout.LINE_END);
+        
+        browseButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                final JFileChooser fileChooser = new JFileChooser();
+                final int returnResult = fileChooser.showSaveDialog(frame);
+                if (returnResult == JFileChooser.APPROVE_OPTION) {
+                    controller.setCurrentFile(fileChooser.getSelectedFile());
+                    currentFileTextField.setText(controller.getCurrentFilePath());
+                }
+                if (returnResult == JFileChooser.ERROR_OPTION) {
+                    JOptionPane.showMessageDialog(fileChooser, e);
+                }
+            }
+        });
         
         frame.setContentPane(mainPanel);
         frame.setVisible(true);
