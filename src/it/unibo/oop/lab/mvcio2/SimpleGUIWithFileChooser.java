@@ -55,17 +55,17 @@ public final class SimpleGUIWithFileChooser {
         final JPanel mainPanel = new JPanel(new BorderLayout());
         final JPanel secondPanel = new JPanel(new BorderLayout());
         
-        final JTextField currentFileTextField = new JTextField();
+        final JTextField currentFileTextField = new JTextField(controller.getCurrentFilePath());
         currentFileTextField.setEditable(false);
         
         final JButton browseButton = new JButton("browse");
-        
         final JTextArea textArea = new JTextArea();
         final JButton saveButton = new JButton("save");
         
         mainPanel.add(secondPanel, BorderLayout.NORTH);
         mainPanel.add(textArea, BorderLayout.CENTER);
         mainPanel.add(saveButton, BorderLayout.SOUTH);
+        
         secondPanel.add(currentFileTextField, BorderLayout.CENTER);
         secondPanel.add(browseButton, BorderLayout.LINE_END);
         
