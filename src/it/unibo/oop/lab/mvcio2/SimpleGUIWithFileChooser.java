@@ -5,8 +5,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.awt.BorderLayout;
 
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -86,6 +88,18 @@ public final class SimpleGUIWithFileChooser {
                     JOptionPane.showMessageDialog(fileChooser, e);
                 }
             }
+        });
+        
+        saveButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                try {
+                    controller.writeAString(textArea.getText());
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            } 
         });
         
         frame.setContentPane(mainPanel);
