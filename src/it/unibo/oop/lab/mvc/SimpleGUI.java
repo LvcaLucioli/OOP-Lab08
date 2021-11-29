@@ -1,9 +1,14 @@
 package it.unibo.oop.lab.mvc;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  * A very simple program using a graphical interface.
@@ -38,7 +43,6 @@ public final class SimpleGUI {
      * builds a new {@link SimpleGUI}.
      */
     public SimpleGUI() {
-
         /*
          * Make the frame half the resolution of the screen. This very method is
          * enough for a single screen setup. In case of multiple monitors, the
@@ -59,7 +63,38 @@ public final class SimpleGUI {
          * flag makes the OS window manager take care of the default positioning
          * on screen. Results may vary, but it is generally the best choice.
          */
+        
+        final JPanel upperPanel = new JPanel(new BorderLayout());
+        final JPanel midPanel = new JPanel(new BorderLayout());
+        final JPanel bottomPanel = new JPanel(new BorderLayout());
+        final JPanel mainPanel = new JPanel(new BorderLayout());
+        
+        final JTextField stringTextField = new JTextField();
+        stringTextField.setEditable(true);
+        upperPanel.add(stringTextField);
+        
+        final JTextArea historyTextArea = new JTextArea();
+        historyTextArea.setEditable(false);
+        midPanel.add(historyTextArea);
+        
+        final JButton printButton = new JButton("print");
+        final JButton historyButton = new JButton("show history");
+        
+        bottomPanel.add(printButton, BorderLayout.NORTH);
+        bottomPanel.add(historyButton, BorderLayout.SOUTH);
+        
+        mainPanel.add(upperPanel, BorderLayout.NORTH);
+        mainPanel.add(midPanel, BorderLayout.CENTER);
+        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        
+        frame.setContentPane(mainPanel);
+
+        
         frame.setLocationByPlatform(true);
+        frame.setVisible(true);
+    }
+    public static void main(final String[] args) {
+        final SimpleGUI myGUI = new SimpleGUI();        
     }
 
 }
