@@ -25,9 +25,9 @@ public interface Controller {
      * an IllegalStateException should be thrown
      * 
      */
-    void setString(String stringToPrint) throws NullPointerException;
+    void setString(String stringToPrint);
     String getNextString();
     List<String> getHistory();
-    void printCurrentString() throws IllegalAccessException;
+    void printCurrentString();
 
 }
