@@ -3,6 +3,8 @@ package it.unibo.oop.lab.mvc;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -43,6 +45,7 @@ public final class SimpleGUI {
      * builds a new {@link SimpleGUI}.
      */
     public SimpleGUI() {
+        final StringController controller = new StringController();
         /*
          * Make the frame half the resolution of the screen. This very method is
          * enough for a single screen setup. In case of multiple monitors, the
@@ -88,10 +91,30 @@ public final class SimpleGUI {
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
         
         frame.setContentPane(mainPanel);
-
-        
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
+        
+        printButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                controller.printCurrentString();
+            }
+        });
+        historyButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                historyTextArea.setText(controller.getHistory().toString());
+            } 
+        });
+        stringTextField.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                controller.setString(stringTextField.getText());
+            }
+        });
     }
     public static void main(final String[] args) {
         final SimpleGUI myGUI = new SimpleGUI();        
