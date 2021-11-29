@@ -112,7 +112,7 @@ public final class SimpleGUI {
 
             @Override
             public void actionPerformed(final ActionEvent e) {
-                controller.setString(stringTextField.getText());
+                   controller.setString(stringTextField.getText());
             }
         });
     }
